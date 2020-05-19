@@ -59,6 +59,11 @@ public:
 	{
 		ifstream fin;
 		fin.open("Weapon.txt");
+		bool isOpen = fin.is_open;
+		if (!isOpen) {
+			cout << "Error" << endl;
+		}
+
 		fin.read((char*)&a, sizeof(Weapon));
 		fin.close();
 
