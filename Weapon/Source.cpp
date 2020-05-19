@@ -41,6 +41,7 @@ public:
 		}
 	}
 
+	
 	void Save(Weapon a)
 	{
 		ofstream fout;
@@ -55,16 +56,19 @@ public:
 
 	}
 
-	void Load(Weapon a)
+	void Load()
 	{
 		ifstream fin;
 		fin.open("Weapon.txt");
-		bool isOpen = fin.is_open;
-		if (!isOpen) {
+		if (!fin.is_open()) {
 			cout << "Error" << endl;
 		}
 
-		fin.read((char*)&a, sizeof(Weapon));
+		Weapon tmp;
+		while (fin.read((char*)&tmp, sizeof(Weapon)))
+		{
+
+		}
 		fin.close();
 
 	}
@@ -78,7 +82,7 @@ int main()
 	pistol_1.Shot();
 	pistol_1.Recharge();
 	pistol_1.Save(pistol_1);
-	pistol_1.Load(pistol_1);
+	pistol_1.Load();
 
 
 	Weapon pistol_2;
@@ -86,14 +90,14 @@ int main()
 	pistol_2.Shot();
 	pistol_2.Recharge();
 	pistol_2.Save(pistol_2);
-	pistol_2.Load(pistol_2);
+	pistol_2.Load();
 
 	Weapon pistol_3;
 	pistol_3.Initialize("Beretta92",50,9,15);
 	pistol_3.Shot();
 	pistol_3.Recharge();
 	pistol_3.Save(pistol_3);
-	pistol_3.Load(pistol_3);
+	pistol_3.Load();
 
 	
 
